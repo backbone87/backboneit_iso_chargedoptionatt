@@ -1,0 +1,41 @@
+=== Titel
+Attribut: Produktoptionen mit Preismodifikation
+
+
+=== Suchbegriffe
+isotope,product,attribute,options,price
+
+
+=== Teaser
+Ermöglicht es Produktoptionen anzulegen, die den Preis des Produkts beeinflussen abhängig von den gewählten Optionen.
+
+
+=== Beschreibung
+<p><strong>Diese Erweiterung benötigt folgende isotope Tickets umgesetzt damit sie funktioniert:</strong></p>
+<ul>
+<li>http://contao-forge.org/issues/2635 Completed and backported for 1.3.0 beta2</li>
+<li>http://contao-forge.org/issues/2636 Completed and backported for 1.3.0 beta2</li>
+<li>http://contao-forge.org/issues/2639</li>
+<li>http://contao-forge.org/issues/2645 Completed and backported for 1.3.0 beta2</li>
+<li>http://contao-forge.org/issues/2646 Completed and backported for 1.3.0 beta2</li>
+<li>http://contao-forge.org/issues/2648</li>
+</ul>
+<p>Eine Umsetzung der Tickets für isotope 1.3.0 beta2 liegt hier:<br/>
+http://contao-forge.org/projects/backboneitisochargedoptionatt/files<br/>
+Diese <strong>muss manuell</strong> in die Contao-Installation kopiert werden!</p>
+
+<p><strong>Diese Erweiterung ist entstanden im Auftrag von <em>snau | visuelle kommunikation</em>.</strong></p>
+
+<h3>Funktionen:</h3>
+<ul>
+<li>Verschiedene Auswahl-Methoden im Frontend: Checkbox, Radio oder Select (einfach und mehrfach)</li>
+<li>Preise der Optionen können pro Produkt definiert werden.</li>
+<li>Pro Produkt kann definiert werden, welche Optionen für dieses Produkt verfügbar sind.</li>
+<li>Bei Einzelauswahl können die Preisdifferenzen zur aktuellen Option angezeigt werden.</li>
+</ul>
+
+=== Freigabe-Notizen und Änderungs-Log
+<p>siehe Handbuch-Link</p>
+
+=== Handbuch-Link
+http://contao-forge.org/projects/backboneitisochargedoptionatt/wiki
