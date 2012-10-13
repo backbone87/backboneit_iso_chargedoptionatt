@@ -18,7 +18,7 @@ class IsotopeChargedOptionAttribute extends Controller {
 		$arrVariantAttributes = array_flip($arrVariantAttributes);
 		
 		foreach(array_filter($arrAttributes, array($this, 'isChargedOptionAttribute')) as $strAttrName) {
-			$arrVariantAttributes[$strAttrName] = true;
+// 			$arrVariantAttributes[$strAttrName] = true;
 			$arrVariantAttributes['price'] = true;
 		}
 		
@@ -66,7 +66,7 @@ class IsotopeChargedOptionAttribute extends Controller {
 		}
 		
 		$arrCurrentValue = $objProduct->getOptions(true);
-		$arrCurrentValue = array_flip((array) $arrCurrentValue[$arrArgs['k']]);
+		$arrCurrentValue = array_flip((array) $arrCurrentValue[$arrArgs['f']]);
 		
 		if($arrArgs['c'] && isset($arrCurrentValue[$arrArgs['v']])) {
 			return '';
@@ -133,7 +133,7 @@ class IsotopeChargedOptionAttribute extends Controller {
 			|| ($arrData['inputType'] == 'select' && !$arrData['eval']['multiple']);
 		$blnUseInsertTag = $arrData['attributes']['bbit_iso_coa_hideCurrentPrice']
 			|| ($blnSingleSelect && $arrData['attributes']['bbit_iso_coa_displayDifference']);
-		
+			
 		$strEmbed = $arrData['attributes']['bbit_iso_coa_embedPrice'];
 		$strEmbed || $strEmbed = '%s';
 		
