@@ -14,6 +14,11 @@ class IsotopeChargedOptionAttribute extends Controller {
 		include $strInclude;
 	}
 	
+	public function hookSQLGetFromFile($arrData) {
+		require_once TL_ROOT . '/system/modules/backboneit_iso_chargedoptionatt/config/iso_config.php';
+		return $arrData;
+	}
+	
 	public function hookProductAttributes(&$arrAttributes, &$arrVariantAttributes, $objProduct) {
 		$arrVariantAttributes = array_flip($arrVariantAttributes);
 		
@@ -371,7 +376,7 @@ class IsotopeChargedOptionAttribute extends Controller {
 		$arrProductOptions = array_intersect_key($arrProductOptions, $arrOptions);
 		
 		foreach($arrOptions as $strValue => $arrRow) {
-			$arrRow = array_merge($arrRow, $arrProductOptions[$strValue]);
+			$arrProductOptions[$strValue] && $arrRow = array_merge($arrRow, $arrProductOptions[$strValue]);
 			if($blnPrice) {
 				strlen($arrRow['price']) || $arrRow['price'] = $arrRow['priceDefault'];
 			}
