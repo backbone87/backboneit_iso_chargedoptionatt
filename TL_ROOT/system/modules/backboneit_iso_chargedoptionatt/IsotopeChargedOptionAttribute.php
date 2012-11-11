@@ -55,7 +55,7 @@ class IsotopeChargedOptionAttribute extends Controller {
 	public function hookReplaceInsertTags($strTag) {
 		list($strTag, $strProductKey) = explode('::', $strTag, 2);
 		if($strTag != self::INSERT_TAG_PRICE_DIFFERENCE) {
-			return '';
+			return false;
 		}
 		
 		list($strProductKey, $strArgs) = explode('?', $strProductKey, 2);
