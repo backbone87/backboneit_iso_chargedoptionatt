@@ -127,9 +127,7 @@ class IsotopeChargedOptionAttribute extends Controller {
 	}
 	
 	protected function generateDCAFE($strField, $arrData, $objProduct) {
-		// configure the input type
 		$strFEInput = $arrData['attributes']['bbit_iso_coa_feInput'];
-		$arrData['eval']['bbit_iso_coa_feInput'] = $strFEInput;
 		
 		// derived flags
 		$blnHTMLLabels = 0 !== strncmp($strFEInput, 'bbit_iso_coa_select', 19);

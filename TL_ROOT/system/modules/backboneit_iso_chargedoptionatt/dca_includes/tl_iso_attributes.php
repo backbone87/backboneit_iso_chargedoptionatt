@@ -8,18 +8,23 @@ $GLOBALS['TL_DCA']['tl_iso_attributes']['palettes']['bbit_iso_coa']
 	= '{attribute_legend},name,field_name,type,legend'
 	. ';{description_legend:hide},description'
 	. ';{options_legend},bbit_iso_coa_options,mandatory'
-	. ';{config_legend},bbit_iso_coa_feInput'
+	. ';{config_legend},bbit_iso_coa_template,bbit_iso_coa_feInput'
 // 	. ';{search_filters_legend},fe_filter,fe_sorting,be_filter'
 	;
 
 $GLOBALS['TL_DCA']['tl_iso_attributes']['subpalettes']['bbit_iso_coa_feInput_bbit_iso_coa_checkbox']
-	= 'bbit_iso_coa_embedPrice,bbit_iso_coa_hideZeroPrices,bbit_iso_coa_hideCurrentPrice';
+	= 'bbit_iso_coa_embedPrice'
+	. ',bbit_iso_coa_hideZeroPrices,bbit_iso_coa_hideCurrentPrice';
 $GLOBALS['TL_DCA']['tl_iso_attributes']['subpalettes']['bbit_iso_coa_feInput_bbit_iso_coa_radio']
-	= 'bbit_iso_coa_embedPrice,bbit_iso_coa_displayDifference,bbit_iso_coa_hideZeroPrices,bbit_iso_coa_hideCurrentPrice';
+	= 'bbit_iso_coa_embedPrice,bbit_iso_coa_displayDifference'
+	. ',bbit_iso_coa_hideZeroPrices,bbit_iso_coa_hideCurrentPrice';
 $GLOBALS['TL_DCA']['tl_iso_attributes']['subpalettes']['bbit_iso_coa_feInput_bbit_iso_coa_select']
-	= 'size,bbit_iso_coa_embedPrice,bbit_iso_coa_displayDifference,bbit_iso_coa_hideZeroPrices,bbit_iso_coa_hideCurrentPrice';
+	= 'bbit_iso_coa_embedPrice,bbit_iso_coa_displayDifference'
+	. ',bbit_iso_coa_hideZeroPrices,bbit_iso_coa_hideCurrentPrice';
 $GLOBALS['TL_DCA']['tl_iso_attributes']['subpalettes']['bbit_iso_coa_feInput_bbit_iso_coa_selectMultiple']
-	= 'size,bbit_iso_coa_embedPrice,bbit_iso_coa_hideZeroPrices,bbit_iso_coa_hideCurrentPrice';
+	= 'size'
+	. ',bbit_iso_coa_embedPrice'
+	. ',bbit_iso_coa_hideZeroPrices,bbit_iso_coa_hideCurrentPrice';
 	
 $GLOBALS['TL_DCA']['tl_iso_attributes']['fields']['type']['options'][] = 'bbit_iso_coa';
 		
@@ -85,6 +90,17 @@ $GLOBALS['TL_DCA']['tl_iso_attributes']['fields']['bbit_iso_coa_options'] = arra
 	),
 );
 
+$GLOBALS['TL_DCA']['tl_iso_attributes']['fields']['bbit_iso_coa_template'] = array(
+	'label'		=> &$GLOBALS['TL_LANG']['tl_iso_attributes']['bbit_iso_coa_template'],
+	'exclude'	=> true,
+	'inputType'	=> 'select',
+	'options'	=> IsotopeBackend::getTemplates('form_bbit_iso_coa'),
+	'eval'		=> array(
+		'includeBlankOption'=> true,
+		'tl_class'	=> 'clr w50',
+	),
+);
+
 $GLOBALS['TL_DCA']['tl_iso_attributes']['fields']['bbit_iso_coa_feInput'] = array(
 	'label'		=> &$GLOBALS['TL_LANG']['tl_iso_attributes']['bbit_iso_coa_feInput'],
 	'exclude'	=> true,
@@ -94,14 +110,14 @@ $GLOBALS['TL_DCA']['tl_iso_attributes']['fields']['bbit_iso_coa_feInput'] = arra
 	'reference'	=> &$GLOBALS['TL_LANG']['tl_iso_attributes']['bbit_iso_coa_feInputOptions'],
 	'eval'		=> array(
 		'submitOnChange'=> true,
-		'tl_class'	=> 'clr w50',
+		'tl_class'	=> 'w50',
 	),
 );
 
 $GLOBALS['TL_DCA']['tl_iso_attributes']['fields']['bbit_iso_coa_embedPrice'] = array(
 	'label'		=> &$GLOBALS['TL_LANG']['tl_iso_attributes']['bbit_iso_coa_embedPrice'],
 	'exclude'	=> true,
-	'default'	=> '%s',
+	'default'	=> '(%s)',
 	'inputType'	=> 'text',
 	'eval'		=> array(
 		'preserveWhitespace'=> true,

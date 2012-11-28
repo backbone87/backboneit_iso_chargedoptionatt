@@ -66,6 +66,7 @@
   <select name="<?php echo $this->strName; if($this->multiple) echo '[]'; ?>"
       id="opt_<?php echo $this->strId; ?>"
       class="<?php if($this->multiple) echo 'multi'; ?>select"
+      <?php if($this->multiple && $this->size >= 3) echo intval($this->size); ?>
       <?php echo $this->getAttributes(); ?>
     ><?php if($this->arrOptions): foreach($this->arrOptions as $arrOption):
         if($arrOption['group']) continue;

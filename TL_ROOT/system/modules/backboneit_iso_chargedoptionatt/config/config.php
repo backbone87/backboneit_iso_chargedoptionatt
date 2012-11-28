@@ -7,5 +7,3 @@ $GLOBALS['TL_HOOKS']['sqlGetFromFile'][]	= array('IsotopeChargedOptionAttribute'
 
 $GLOBALS['ISO_HOOKS']['productAttributes'][]= array('IsotopeChargedOptionAttribute', 'hookProductAttributes');
 $GLOBALS['ISO_HOOKS']['calculatePrice'][]	= array('IsotopeChargedOptionAttribute', 'hookCalculatePrice');
-
-$GLOBALS['TL_FFL']['radioClean'] = 'FormRadioButtonClean';

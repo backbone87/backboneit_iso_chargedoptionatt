@@ -31,7 +31,7 @@ class FormIsotopeChargedOptionAttribute extends Widget {
 			case 'multiple':
 				break;
 				
-			case 'template':
+			case 'bbit_iso_coa_template':
 				$this->strTemplate = $varValue;
 				break;
 				
@@ -42,12 +42,6 @@ class FormIsotopeChargedOptionAttribute extends Widget {
 					unset($this->arrAttributes['required']);
 				}
 				parent::__set($strKey, $varValue);
-				break;
-
-			case 'mSize':
-				if($this->multiple) {
-					$this->arrAttributes['size'] = $varValue;
-				}
 				break;
 
 			case 'options':
