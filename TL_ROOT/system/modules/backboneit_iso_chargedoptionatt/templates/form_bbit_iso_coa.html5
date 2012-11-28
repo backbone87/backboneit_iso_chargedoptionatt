@@ -1,0 +1,79 @@
+<?php if(!$this->arrOptions): ?>
+<fieldset id="ctrl_<?php echo $this->strId; ?>"
+    class="dummy_container <?php echo $this->strClass; ?>">
+  <?php if($this->strLabel): ?>
+  <label id="lbl_<?php echo $this->strId; ?>"
+    ><?php echo $this->strLabel; ?></label>
+  <?php endif; ?>
+  <p><?php echo $GLOBALS['TL_LANG']['tl_iso_products']['noOptionsMessage']; ?></p>
+</fieldset>
+
+<?php elseif($this->strType == 'bbit_iso_coa_checkbox'): ?>
+<fieldset id="ctrl_<?php echo $this->strId; ?>"
+    class="checkbox_container <?php echo $this->strClass; ?>">
+  <legend
+    ><?php if($this->strLabel): if($this->required):
+    ?><span class="invisible"><?php echo $GLOBALS['TL_LANG']['MSC']['mandatory']; ?></span
+    ><?php echo $this->strLabel; ?><span class="mandatory">*</span
+    ><?php else: echo $this->strLabel; endif; endif; ?></legend>
+  <?php echo $this->strError; ?>
+  <input type="hidden" name="<?php echo $this->strName; ?>" value="" />
+  <?php $strMultiple = $this->multiple ? '[]' : '';
+      foreach($this->arrOptions as $i => $arrOption): ?>
+    <span><input type="checkbox" class="radio"
+        name="<?php echo $this->strName, $strMultiple; ?>"
+        id="opt_<?php echo $this->strId, '_', $i; ?>"
+        value="<?php echo $arrOption['value']; ?>"
+        <?php echo $this->isChecked($arrOption), $this->getAttributes(); ?>
+      /> <label
+        id="lbl_<?php echo $this->strId, '_', $i; ?>"
+        for="opt_<?php echo $this->strId, '_', $i; ?>"
+      ><?php echo $arrOption['label']; ?></label></span>
+  <?php endforeach; ?>
+</fieldset>
+
+<?php elseif($this->strType == 'bbit_iso_coa_radio'): ?>
+<fieldset id="ctrl_<?php echo $this->strId; ?>"
+    class="radio_container <?php echo $this->strClass; ?>">
+  <legend
+    ><?php if($this->strLabel): if($this->required):
+    ?><span class="invisible"><?php echo $GLOBALS['TL_LANG']['MSC']['mandatory']; ?></span
+    ><?php echo $this->strLabel; ?><span class="mandatory">*</span
+    ><?php else: echo $this->strLabel; endif; endif; ?></legend>
+  <?php echo $this->strError; ?>
+  <input type="hidden" name="<?php echo $this->strName; ?>" value="" />
+  <?php foreach($this->arrOptions as $i => $arrOption): ?>
+    <span><input type="radio" class="radio"
+        name="<?php echo $this->strName; ?>"
+        id="opt_<?php echo $this->strId, '_', $i; ?>"
+        value="<?php echo $arrOption['value']; ?>"
+        <?php echo $this->isChecked($arrOption), $this->getAttributes(); ?>
+      /> <label
+        id="lbl_<?php echo $this->strId, '_', $i; ?>"
+        for="opt_<?php echo $this->strId, '_', $i; ?>"
+      ><?php echo $arrOption['label']; ?></label></span>
+  <?php endforeach; ?>
+</fieldset>
+
+<?php else: ?>
+<fieldset id="ctrl_<?php echo $this->strId; ?>"
+    class="select_container <?php echo $this->strClass; ?>">
+  <?php if($this->strLabel): ?>
+  <label id="lbl_<?php echo $this->strId; ?>"
+      for="opt_<?php echo $this->strId; ?>"
+    ><?php echo $this->strLabel; ?></label>
+  <?php endif; ?>
+  <select name="<?php echo $this->strName; if($this->multiple) echo '[]'; ?>"
+      id="opt_<?php echo $this->strId; ?>"
+      class="<?php if($this->multiple) echo 'multi'; ?>select"
+      <?php echo $this->getAttributes(); ?>
+    ><?php if($this->arrOptions): foreach($this->arrOptions as $arrOption):
+        if($arrOption['group']) continue;
+    ?><option value="<?php echo $arrOption['value']; ?>"
+        <?php echo $this->isSelected($arrOption); ?>
+      ><?php echo $arrOption['label']; ?></option>
+    <?php endforeach; else: ?><option value="">-</option><?php endif; ?>
+    </select>
+  <?php echo $this->strError; ?>
+</fieldset>
+<?php endif; ?>

@@ -128,19 +128,18 @@ class IsotopeChargedOptionAttribute extends Controller {
 	
 	protected function generateDCAFE($strField, $arrData, $objProduct) {
 		// configure the input type
-		$arrData['inputType'] = substr($arrData['attributes']['bbit_iso_coa_feInput'], 13);
-		strncmp($arrData['inputType'], 'select', 6) == 0 && $arrData['inputType'] = 'select';
-		$arrData['eval']['multiple'] = $arrData['attributes']['bbit_iso_coa_feInput'] == 'bbit_iso_coa_selectMultiple';
-
+		$strFEInput = $arrData['attributes']['bbit_iso_coa_feInput'];
+		$arrData['eval']['bbit_iso_coa_feInput'] = $strFEInput;
+		
 		// derived flags
-		$blnHTMLLabels = $arrData['inputType'] != 'select';
-		$blnSingleSelect = $arrData['inputType'] == 'radio'
-			|| ($arrData['inputType'] == 'select' && !$arrData['eval']['multiple']);
+		$blnHTMLLabels = 0 !== strncmp($strFEInput, 'bbit_iso_coa_select', 19);
+		$blnSingleSelect = $strFEInput == 'bbit_iso_coa_radio'
+			|| $strFEInput == 'bbit_iso_coa_select';
 		$blnUseInsertTag = $arrData['attributes']['bbit_iso_coa_hideCurrentPrice']
 			|| ($blnSingleSelect && $arrData['attributes']['bbit_iso_coa_displayDifference']);
 			
 		$strEmbed = $arrData['attributes']['bbit_iso_coa_embedPrice'];
-		$strEmbed || $strEmbed = '%s';
+		$strEmbed || $strEmbed = '(%s)';
 		
 		// merge product specific option configuration with attribute configuration
 		$arrOptions = deserialize($arrData['attributes']['bbit_iso_coa_options'], true);
@@ -180,16 +179,6 @@ class IsotopeChargedOptionAttribute extends Controller {
 			$arrOption['default'] && $arrData['default'][] = $strValue;
 			$arrData['options'][] = $strValue;
 			$arrData['reference'][$strValue] = sprintf($arrOption['label'], $strPrice);
-		}
-		
-		if(!$arrData['options']) {
-			$GLOBALS['ISO_ATTR']['bbit_iso_coa']['class'] = 'DummyWidget';
-			$arrData['eval']['dummyMessage'] = &$GLOBALS['TL_LANG']['tl_iso_products']['noOptionsMessage'];
-			$arrData['inputType'] == 'select' || $arrData['eval']['includeLabel'] = true;
-			unset($arrData['inputType']);
-			
-		} else {
-			unset($GLOBALS['ISO_ATTR']['bbit_iso_coa']['class']);
 		}
 		
 		$blnSingleSelect && $arrData['default'] = $arrData['default'][0];

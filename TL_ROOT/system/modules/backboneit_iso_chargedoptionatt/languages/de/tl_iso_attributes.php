@@ -9,9 +9,9 @@ $GLOBALS['TL_LANG']['tl_iso_attributes']['bbit_iso_coa_pricesPerProduct']
 $GLOBALS['TL_LANG']['tl_iso_attributes']['bbit_iso_coa_feInput']
 	= array('Auswahltyp', 'Wie die Option vom Benutzer im Frontend festgelegt werden kann.');
 $GLOBALS['TL_LANG']['tl_iso_attributes']['bbit_iso_coa_feInputOptions'] = array(
-	'bbit_iso_coa_radio'	=> 'Radio (Einzelauswahl)',
-	'bbit_iso_coa_checkbox'	=> 'Checkbox (Mehrfachauswahl)',
-	'bbit_iso_coa_select'	=> 'Select (Einzelauswahl)',
+	'bbit_iso_coa_radioClean'	=> 'Radio (Einzelauswahl)',
+	'bbit_iso_coa_checkbox'		=> 'Checkbox (Mehrfachauswahl)',
+	'bbit_iso_coa_select'		=> 'Select (Einzelauswahl)',
 	'bbit_iso_coa_selectMultiple'=> 'Select (Mehrfachauswahl)',
 );
 
