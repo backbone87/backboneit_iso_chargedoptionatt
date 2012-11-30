@@ -117,10 +117,9 @@ $GLOBALS['TL_DCA']['tl_iso_attributes']['fields']['bbit_iso_coa_feInput'] = arra
 $GLOBALS['TL_DCA']['tl_iso_attributes']['fields']['bbit_iso_coa_embedPrice'] = array(
 	'label'		=> &$GLOBALS['TL_LANG']['tl_iso_attributes']['bbit_iso_coa_embedPrice'],
 	'exclude'	=> true,
-	'default'	=> '(%s)',
+	'default'	=> '&nbsp;(%s)',
 	'inputType'	=> 'text',
 	'eval'		=> array(
-		'preserveWhitespace'=> true,
 		'tl_class'	=> 'clr w50',
 	),
 );
