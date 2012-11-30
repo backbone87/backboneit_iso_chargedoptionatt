@@ -12,6 +12,8 @@ CREATE TABLE `tl_iso_attributes` (
   `bbit_iso_coa_options` blob NULL,
   `bbit_iso_coa_template` varchar(255) NOT NULL default '',
   `bbit_iso_coa_feInput` varchar(255) NOT NULL default '',
+  `bbit_iso_coa_blankOption` char(1) NOT NULL default '',
+  `bbit_iso_coa_blankLabel` varchar(255) NOT NULL default '',
   `bbit_iso_coa_embedPrice` varchar(255) NOT NULL default '',
   `bbit_iso_coa_displayDifference` char(1) NOT NULL default '',
   `bbit_iso_coa_hideZeroPrices` char(1) NOT NULL default '',

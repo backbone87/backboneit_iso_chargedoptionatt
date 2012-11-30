@@ -19,7 +19,8 @@ $GLOBALS['TL_DCA']['tl_iso_attributes']['subpalettes']['bbit_iso_coa_feInput_bbi
 	= 'bbit_iso_coa_embedPrice,bbit_iso_coa_displayDifference'
 	. ',bbit_iso_coa_hideZeroPrices,bbit_iso_coa_hideCurrentPrice';
 $GLOBALS['TL_DCA']['tl_iso_attributes']['subpalettes']['bbit_iso_coa_feInput_bbit_iso_coa_select']
-	= 'bbit_iso_coa_embedPrice,bbit_iso_coa_displayDifference'
+	= 'bbit_iso_coa_blankOption,bbit_iso_coa_blankLabel'
+	. ',bbit_iso_coa_embedPrice,bbit_iso_coa_displayDifference'
 	. ',bbit_iso_coa_hideZeroPrices,bbit_iso_coa_hideCurrentPrice';
 $GLOBALS['TL_DCA']['tl_iso_attributes']['subpalettes']['bbit_iso_coa_feInput_bbit_iso_coa_selectMultiple']
 	= 'size'
@@ -110,6 +111,26 @@ $GLOBALS['TL_DCA']['tl_iso_attributes']['fields']['bbit_iso_coa_feInput'] = arra
 	'reference'	=> &$GLOBALS['TL_LANG']['tl_iso_attributes']['bbit_iso_coa_feInputOptions'],
 	'eval'		=> array(
 		'submitOnChange'=> true,
+		'tl_class'	=> 'w50',
+	),
+);
+
+$GLOBALS['TL_DCA']['tl_iso_attributes']['fields']['bbit_iso_coa_blankOption'] = array(
+	'label'		=> &$GLOBALS['TL_LANG']['tl_iso_attributes']['bbit_iso_coa_blankOption'],
+	'exclude'	=> true,
+	'default'	=> 1,
+	'inputType'	=> 'checkbox',
+	'eval'		=> array(
+		'tl_class'	=> 'clr w50 cbx m12',
+	),
+);
+
+$GLOBALS['TL_DCA']['tl_iso_attributes']['fields']['bbit_iso_coa_blankLabel'] = array(
+	'label'		=> &$GLOBALS['TL_LANG']['tl_iso_attributes']['bbit_iso_coa_blankLabel'],
+	'exclude'	=> true,
+	'default'	=> '-',
+	'inputType'	=> 'text',
+	'eval'		=> array(
 		'tl_class'	=> 'w50',
 	),
 );

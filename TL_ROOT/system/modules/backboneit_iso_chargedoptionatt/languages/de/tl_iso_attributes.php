@@ -15,6 +15,12 @@ $GLOBALS['TL_LANG']['tl_iso_attributes']['bbit_iso_coa_feInputOptions'] = array(
 	'bbit_iso_coa_selectMultiple'=> 'Select (Mehrfachauswahl)',
 );
 
+$GLOBALS['TL_LANG']['tl_iso_attributes']['bbit_iso_coa_blankOption']
+	= array('Leere Option hinzufügen', 'Leere Option zur Auswahl hinzufügen.');
+
+$GLOBALS['TL_LANG']['tl_iso_attributes']['bbit_iso_coa_blankLabel']
+	= array('Beschriftung der leeren Option', 'Die Beschriftung der leeren Option.');
+
 $GLOBALS['TL_LANG']['tl_iso_attributes']['bbit_iso_coa_embedPrice']
 	= array('Preis einbetten', 'Den Optionspreis in eine Zeichenkette einbetten. "%s" wird mit dem Preis ersetzt. Damit diese Einstellung im Frontend sichtbar ist, muss außerdem ein Platzhalter "%s" in den Options-Bezeichnungen eingesetzt werden.');
 	

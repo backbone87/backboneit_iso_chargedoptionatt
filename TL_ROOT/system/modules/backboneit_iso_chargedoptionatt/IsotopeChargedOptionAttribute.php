@@ -141,6 +141,11 @@ class IsotopeChargedOptionAttribute extends Controller {
 		$strEmbed = $arrData['attributes']['bbit_iso_coa_embedPrice'];
 		$strEmbed || $strEmbed = '&nbsp;(%s)';
 		
+		if($strFEInput == 'bbit_iso_coa_select') {
+			$arrData['eval']['includeBlankOption'] = $arrData['attributes']['bbit_iso_coa_blankOption'];
+			$arrData['eval']['blankOptionLabel'] = $arrData['attributes']['bbit_iso_coa_blankLabel'];
+		}
+		
 		// merge product specific option configuration with attribute configuration
 		$arrOptions = deserialize($arrData['attributes']['bbit_iso_coa_options'], true);
 		$arrProductOptions = deserialize($objProduct->$strField, true);
