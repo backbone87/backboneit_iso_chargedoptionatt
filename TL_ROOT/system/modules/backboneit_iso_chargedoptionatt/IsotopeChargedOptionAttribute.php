@@ -115,18 +115,20 @@ class IsotopeChargedOptionAttribute extends Controller {
 			);
 		}
 		
-		// product may only be supplied in FE context
 		// config the attribute for customer option selection
+		// product may only be supplied when product option widget is required
 		if($objProduct) {
-			return $this->generateDCAFE($strField, $arrData, $objProduct);
+			return $this->generateAsProductOptionWidget($strField, $arrData, $objProduct);
 			
-		// config the attribute for backend per product configuration
+		// config the attribute for DCA
+		// used for label generation
+		// and in backend product configuration
 		} else {
-			return $this->generateDCABE($arrData);
+			return $this->generateAsDCA($arrData);
 		}
 	}
 	
-	protected function generateDCAFE($strField, $arrData, $objProduct) {
+	protected function generateAsProductOptionWidget($strField, $arrData, $objProduct) {
 		$strFEInput = $arrData['attributes']['bbit_iso_coa_feInput'];
 		
 		// derived flags
@@ -195,7 +197,7 @@ class IsotopeChargedOptionAttribute extends Controller {
 		return $arrData;
 	}
 	
-	protected function generateDCABE($arrData) {
+	protected function generateAsDCA($arrData) {
 		$arrData['eval']['buttons'] = array('copy' => false, 'delete' => false);
 		$arrData['eval']['columnFields'] = array(
 			'value' => array(
@@ -268,7 +270,7 @@ class IsotopeChargedOptionAttribute extends Controller {
 		);
 			
 		foreach(deserialize($arrData['attributes']['bbit_iso_coa_options'], true) as $strValue => $arrOption) {
-			$arrData['reference'][$strValue] = $arrOption['label'];
+			$arrData['reference'][$strValue] = sprintf($arrOption['label'], '');
 		}
 		
 		$arrData['load_callback'][] = array('IsotopeChargedOptionAttribute', 'callbackLoadCOA');
