@@ -1,0 +1,3 @@
+[submodule "ext/FancySelect"]
+	path = ext/FancySelect
+	url = git@github.com:lorenzos/FancySelect.git
