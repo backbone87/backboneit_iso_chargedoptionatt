@@ -1,7 +1,5 @@
 <?php
 
-require_once TL_ROOT . '/system/modules/backboneit_iso_chargedoptionatt/config/iso_config.php';
-
 $GLOBALS['TL_DCA']['tl_iso_attributes']['palettes']['__selector__'][] = 'bbit_iso_coa_feInput';
 
 $GLOBALS['TL_DCA']['tl_iso_attributes']['palettes']['bbit_iso_coa']
@@ -35,12 +33,21 @@ $GLOBALS['TL_DCA']['tl_iso_attributes']['fields']['bbit_iso_coa_options'] = arra
 	'inputType' 	=> 'multiColumnWizard',
 	'eval' 			=> array(
 		'columnFields' => array(
+			'image' => array(
+				'label'		=> &$GLOBALS['TL_LANG']['tl_iso_products']['bbit_iso_coa_image'],
+				'exclude'	=> true,
+				'inputType'	=> 'filepicker4ward',
+				'eval'		=> array(
+					'extensions'=>'png,jpg,jpeg,gif',
+					'style'		=> 'width:100px;',
+				),
+			),
 			'value' => array(
 				'label'		=> &$GLOBALS['TL_LANG']['tl_iso_products']['bbit_iso_coa_value'],
 				'exclude'	=> true,
 				'inputType'	=> 'text',
 				'eval'		=> array(
-					'style'		=> 'width:100px;',
+					'style'		=> 'width:80px;',
 				),
 			),
 			'label' => array(
@@ -49,7 +56,7 @@ $GLOBALS['TL_DCA']['tl_iso_attributes']['fields']['bbit_iso_coa_options'] = arra
 				'inputType'	=> 'text',
 				'eval'		=> array(
 					'mandatory'	=> true,
-					'style'		=> 'width:250px;',
+					'style'		=> 'width:230px;',
 				),
 			),
 			'priceDefault' => array(
@@ -59,7 +66,7 @@ $GLOBALS['TL_DCA']['tl_iso_attributes']['fields']['bbit_iso_coa_options'] = arra
 				'eval'		=> array(
 					'mandatory'	=> true,
 					'rgxp'		=> 'price',
-					'style'		=> 'width:100px;',
+					'style'		=> 'width:90px;',
 				),
 				'save_callback' => array(
 					array('IsotopeChargedOptionAttribute', 'callbackFormatPrice'),

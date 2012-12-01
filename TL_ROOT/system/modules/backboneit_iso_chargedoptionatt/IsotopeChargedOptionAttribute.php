@@ -4,21 +4,6 @@ class IsotopeChargedOptionAttribute extends Controller {
 	
 	const INSERT_TAG_PRICE_DIFFERENCE = 'bbit_iso_coa_price';
 	
-	public function hookLoadDataContainer($strTable) {
-		$strInclude = TL_ROOT . '/system/modules/backboneit_iso_chargedoptionatt/dca_includes/' . $strTable . '.php';
-		
-		if(!is_file($strInclude)) {
-			return;
-		}
-		
-		include $strInclude;
-	}
-	
-	public function hookSQLGetFromFile($arrData) {
-		require_once TL_ROOT . '/system/modules/backboneit_iso_chargedoptionatt/config/iso_config.php';
-		return $arrData;
-	}
-	
 	public function hookProductAttributes(&$arrAttributes, &$arrVariantAttributes, $objProduct) {
 		$arrVariantAttributes = array_flip($arrVariantAttributes);
 		
@@ -150,6 +135,7 @@ class IsotopeChargedOptionAttribute extends Controller {
 		$arrOptions = deserialize($arrData['attributes']['bbit_iso_coa_options'], true);
 		$arrProductOptions = deserialize($objProduct->$strField, true);
 		$arrOptions = $this->mergeCOAOptions($arrOptions, $arrProductOptions, true);
+		$arrData['eval']['bbit_iso_coa_options'] = $arrOptions;
 		
 		$blnUseInsertTag && $strProductKey = $this->cacheProduct($objProduct, $strField, $arrOptions);
 		
