@@ -80,8 +80,8 @@
   </select>
   <script>
 <?php
-$GLOBALS['TL_JAVASCRIPT']['FancySelect'] = 'system/modules/backboneit_iso_chargedoptionatt/html/js/FancySelect.js';
-$GLOBALS['TL_CSS']['FancySelect'] = 'system/modules/backboneit_iso_chargedoptionatt/html/css/FancySelect.css';
+$GLOBALS['TL_JAVASCRIPT']['FancySelect'] = 'plugins/FancySelect/FancySelect.js';
+$GLOBALS['TL_CSS']['FancySelect'] = 'plugins/FancySelect/FancySelect.css';
 ?>
 window.addEvent("domready", function() {
 	$(<?php echo json_encode('opt_' . $this->strId); ?>).fancySelect({ legacyEvents: true, autoHide: true, showImages: <?php echo json_encode($blnImages); ?> });
