@@ -264,8 +264,8 @@ class IsotopeChargedOptionAttribute extends Controller {
 			$arrData['reference'][$strValue] = sprintf($arrOption['label'], '');
 		}
 		
-		$arrData['load_callback'][] = array('IsotopeChargedOptionAttribute', 'callbackLoadCOA');
-		$arrData['save_callback'][] = array('IsotopeChargedOptionAttribute', 'callbackSaveCOA');
+		$arrData['load_callback']['bbit_iso_coa'] = array('IsotopeChargedOptionAttribute', 'callbackLoadCOA');
+		$arrData['save_callback']['bbit_iso_coa'] = array('IsotopeChargedOptionAttribute', 'callbackSaveCOA');
 		
 		return $arrData;
 	}
