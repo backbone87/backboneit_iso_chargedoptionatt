@@ -3,8 +3,8 @@
   
 	<property name="build.dir" value="build" />
 	<property name="build.module" value="${build.dir}/TL_ROOT/system/modules/backboneit_iso_chargedoptionatt" />
-	<property name="minjs.dir" value="${build.module}/js" />
-	<property name="mincss.dir" value="${build.module}/css" />
+	<property name="minjs.dir" value="${build.module}/html/js" />
+	<property name="mincss.dir" value="${build.module}/html/css" />
 	
 	<import file="ext/yui-compressor/yui.xml" />
 	
@@ -14,8 +14,6 @@
 	</target>
 	
 	<target name="build" depends="clean">
-		<antcall target="tickets"></antcall>
-		
 		<copy todir="${build.dir}/TL_ROOT">
 			<fileset dir="TL_ROOT" includes="**/*.php" />
 			<filterchain>
@@ -26,6 +24,21 @@
 		<copy todir="${build.dir}/TL_ROOT">
 			<fileset dir="TL_ROOT" excludes="**/*.php" />
 		</copy>
+		<copy todir="${build.dir}/TL_ROOT/plugins/FancySelect">
+			<fileset dir="ext/FancySelect/Source" />
+		</copy>
+
+		<!-- FancySelect.js -->
+		<antcall target="minjs">
+			<param name="minjs.dir" value="${build.dir}/TL_ROOT/plugins/FancySelect" />
+			<param name="minjs.file"  value="FancySelect.js" />
+		</antcall>
+
+		<!-- FancySelect.css -->
+		<antcall target="mincss">
+			<param name="mincss.dir" value="${build.dir}/TL_ROOT/plugins/FancySelect" />
+			<param name="mincss.file"  value="FancySelect.css" />
+		</antcall>
 		
 	  	<zip destfile="${build.dir}/backboneit_iso_chargedoptionatt.zip">
 	  		<zipfileset dir="${build.dir}/TL_ROOT" />
