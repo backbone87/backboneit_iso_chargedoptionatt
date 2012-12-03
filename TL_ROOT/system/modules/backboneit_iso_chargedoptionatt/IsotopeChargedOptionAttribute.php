@@ -259,7 +259,7 @@ class IsotopeChargedOptionAttribute extends Controller {
 			$arrData['options'],
 			$arrData['reference']
 		);
-			
+		
 		foreach(deserialize($arrData['attributes']['bbit_iso_coa_options'], true) as $strValue => $arrOption) {
 			$arrData['reference'][$strValue] = sprintf($arrOption['label'], '');
 		}
