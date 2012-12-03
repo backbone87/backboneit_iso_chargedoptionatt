@@ -91,10 +91,10 @@ $GLOBALS['TL_DCA']['tl_iso_attributes']['fields']['bbit_iso_coa_options'] = arra
 		)
 	),
 	'load_callback'	=> array(
-		array('IsotopeChargedOptionAttribute', 'callbackLoadCOAOptions'),
+		'bbit_iso_coa' => array('IsotopeChargedOptionAttribute', 'callbackLoadCOAOptions'),
 	),
 	'save_callback'	=> array(
-		array('IsotopeChargedOptionAttribute', 'callbackSaveCOAOptions'),
+		'bbit_iso_coa' => array('IsotopeChargedOptionAttribute', 'callbackSaveCOAOptions'),
 	),
 );
 
